@@ -8,15 +8,14 @@ use Tests\TestCase;
 
 class Admin_Can_Get_All_ProfilesTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
+    /** @test */
+    public function admin_can_get_all_profiles()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
+// clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Admin_Can_Get_All_ProfilesTest.php --filter admin_can_get_all_profiles
+        $this->withoutExceptionHandling();
+        $this->withoutMiddleware();
+        $response = $this->get("http://localhost:8000/api/auth/allprofiles");
+        $response->assertOk();
+ 
     }
 }
