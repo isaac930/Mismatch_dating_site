@@ -100,9 +100,10 @@ public function index(){
         $email = "kirumiraisaac@gmail.com";
     }
 
+    $exclude = 'Not Searching';
     $usergender = Profile::where('email',$email)->get('gender');
     
-    $profiles = Profile::orderByDesc('id')->where('email','!=',$email)->where('gender','!=',$usergender)->get();
+    $profiles = Profile::orderByDesc('id')->where('email','!=',$email)->where('gender','!=',$usergender)->where('searching_status','!=',$exclude)->get();
     return response()->json(['profiles' => $profiles->toArray()]);
     if(!$profiles){
         return respose()->json(['message' => 'No Profile Found']);
@@ -112,7 +113,14 @@ public function index(){
 public function show($id){
 
     $exclude = 'Not Searching';
+   
+    if (Auth::check()){
     $email = Auth()->user()->email;
+        
+    }
+    else{   
+    $email = "kirumiraisaac@gmail.com";
+        }
     $profile = Profile::where('searching_status','!=',$exclude)->where('email','!=',$email)->where('id',$id)->get();
     return response()->json(['profile' => $profile->toArray()]);
     if(!$profile){
@@ -138,10 +146,20 @@ public function update(Request $request, $id){
         return response()->json($validator->errors(), 400);
     }
 
-    $name = Auth()->user()->name;
-    $email = Auth()->user()->email;
-    $contact = Auth()->user()->contact;
-    $image_path = Auth()->user()->image_path;
+    if (Auth::check()){
+        $name = Auth()->user()->name;
+        $email = Auth()->user()->email;
+        $contact = Auth()->user()->contact;
+        $image_path = Auth()->user()->image_path;
+        }
+    
+        else{   
+            
+            $name = "kirumira isaac";
+            $email = "kirumiraisaac@gmail.com";
+            $contact = "256759939936";
+            $image_path = "1234566.jpeg";
+        }
   
     $exclude = 'Not Searching';
     $profile = Profile::where('searching_status','!=',$exclude)->find($id);

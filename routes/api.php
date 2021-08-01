@@ -70,6 +70,9 @@ Route::group([
 
     Route::get('broadcast', 'InvokeNewMessageEventController@getNewMessage');
 
+    //command to create an sqlite db to use for our tests
+    // touch database/datase.sqlite
+
 
     
 }

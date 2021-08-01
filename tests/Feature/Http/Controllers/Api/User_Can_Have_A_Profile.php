@@ -12,10 +12,16 @@ class User_Can_Have_A_Profile extends TestCase
   
   // use RefreshDatabase;
 
+  //making a test file  php artisan make:test Http/Controllers/Api/User_Can_Have_A_Profile
+  
+  //executing all the tests in this test class
+
+  //clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php
 
   /** @test */
     public function a_user_can_have_a_profile()
     {
+      //clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_have_a_profile
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->post("http://localhost:8000/api/auth/profiles",[
@@ -39,12 +45,74 @@ class User_Can_Have_A_Profile extends TestCase
       /** @test */
       public function a_user_can_get_other_people_profile()
       {
-
-        //$this->withoutExceptionHandling();
+  // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_get_other_people_profile
+        
+        $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->get("http://localhost:8000/api/auth/profiles");
         $response->assertOk();
        
 
       }
+
+
+       /** @test */
+       public function a_user_can_update_his_profile()
+       {
+
+        //clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_update_his_profile
+
+         $this->withoutExceptionHandling();
+
+         $id = 4; //id value for kirumira isaac
+         $this->withoutMiddleware();
+         $response = $this->put("http://localhost:8000/api/auth/profiles/$id",[
+           
+         'name' => 'kirumira isaac',
+         'email' => 'kirumiraisaac@gmail.com',
+         'image_path' => '12345645566.jpg',   
+         'age' => '39',
+         'location' => 'ntebbe',
+         'place_of_birth' => 'mityana',
+         'occupation' => 'engineer',
+         'likes' => 'prayers updated',
+         'dislikes' => 'alcohol updated',
+         'gender' => 'male',
+         'searching_status' => 'single and searching',
+         ]);
+         $response->assertOk();
+
+
+       }
+
+         /** @test */
+         public function a_user_can_delete_his_profile()
+         {
+
+// clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_delete_his_profile
+
+          $this->withoutExceptionHandling();
+
+          $id = 4; //id value for kirumira isaac
+          $this->withoutMiddleware();
+          $response = $this->delete("http://localhost:8000/api/auth/profiles/$id");
+
+          $response->assertOk();
+
+         }
+
+
+          /** @test */
+          public function a_user_can_a_profile_for_other_specific_user()
+          {
+
+            // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_a_profile_for_other_specific_user
+
+            $id = 1; //id value for ndagire oliva
+            $this->withoutExceptionHandling();
+            $this->withoutMiddleware();
+            $response = $this->get("http://localhost:8000/api/auth/profiles/$id");
+            $response->assertOk();
+
+          }
 }
