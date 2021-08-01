@@ -34,6 +34,7 @@ class User_Can_Chat_With_Another_User extends TestCase
        public function a_user_can_update_his_chat_post()
        {
         // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_update_his_chat_post   
+        
         $id = 4;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
@@ -48,11 +49,40 @@ class User_Can_Chat_With_Another_User extends TestCase
         ]);
         $response->assertOk();
        }
-       
+
       /** @test */
        public function a_user_can_get_his_own_posts()
        {
-
+       //  clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_get_his_own_posts
+        
+        $this->withoutExceptionHandling();
+        $this->withoutMiddleware();
+        $response = $this->get("http://localhost:8000/api/auth/chats");
+        $response->assertOk();
 
        }
+
+         /** @test */
+         public function a_user_can_get_a_single_post_in_his_own_posts()
+         {
+ // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_get_a_single_post_in_his_own_posts
+            
+             $id = 4;
+            $this->withoutExceptionHandling();
+            $this->withoutMiddleware();
+            $response = $this->get("http://localhost:8000/api/auth/chats/$id");
+            $response->assertOk();
+         }
+
+          /** @test */
+          public function a_user_can_delete_a_single_post_in_his_own_posts()
+          {
+// clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_delete_a_single_post_in_his_own_posts
+            $id = 9;
+            $this->withoutExceptionHandling();
+            $this->withoutMiddleware();
+            $response = $this->delete("http://localhost:8000/api/auth/chats/$id");
+            $response->assertOk();
+
+          }
 }

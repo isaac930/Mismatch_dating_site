@@ -78,7 +78,13 @@ class ChatsController extends Controller
 
     public function index(){
    
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+             $email = "kirumiraisaac@gmail.com";
+            }
         $chats = Chat::orderByDesc('id')->where('email',$email)->get();
         return response()->json(['chats' => $chats->toArray()]);
         if(!$chats){
@@ -89,7 +95,14 @@ class ChatsController extends Controller
 
     public function show($id){
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+             $email = "kirumiraisaac@gmail.com";
+            }
+
         $chat = Chat::where('email',$email)->where('id',$id)->get();
         return response()->json(['chat' => $chat->toArray()]);
         if(!$chat){
@@ -152,7 +165,13 @@ class ChatsController extends Controller
     }
 
     public function destroy($id){
-        $email = Auth()->user()->email;
+         if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+             $email = "kirumiraisaac@gmail.com";
+            }
         $chat = Chat::where('email',$email)->where('id',$id)->delete();
         return response()->json(['message' => 'Chat Post Deleted Successfully']);
         if(!$chat){
