@@ -20,7 +20,13 @@ class GetAllRepliesAUserMadeController extends Controller
 
     public function get_all_replies_auser_makes(){
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+                $email = "kirumiraisaac@gmail.com";
+            }
         $chats = ChatReply::where('chatment_email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
         if(!$chats){
