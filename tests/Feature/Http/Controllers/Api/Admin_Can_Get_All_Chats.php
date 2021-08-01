@@ -8,15 +8,17 @@ use Tests\TestCase;
 
 class Admin_Can_Get_All_Chats extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
+// clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Admin_Can_Get_All_Chats.php
 
-        $response->assertStatus(200);
-    }
+   /** @test */
+   public function a_user_can_get_all_chats()
+   {
+// clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Admin_Can_Get_All_Chats.php --filter a_user_can_get_all_chats
+ 
+       $this->withoutExceptionHandling();
+       $this->withoutMiddleware();
+       $response = $this->get("http://localhost:8000/api/auth/allchats");
+       $response->assertOk();
+
+   }
 }

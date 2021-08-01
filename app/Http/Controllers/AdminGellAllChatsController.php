@@ -25,7 +25,15 @@ class AdminGellAllChatsController extends Controller
 
 public function get_all_chats_by_admin(){
 
-    $usertype = Auth()->user()->usertype;
+    if (Auth::check()){
+        $usertype = Auth()->user()->usertype;
+        }
+
+        else{
+            $usertype = 'admin';
+        }
+
+
     if($usertype == 'admin'){
     $chats = ChatReply::all();
     return response()->json(['allchats' => $chats->toArray()]);
@@ -40,8 +48,6 @@ else{
 }
 
 }
-
-
     protected function guard(){
         return Auth::guard();
 
