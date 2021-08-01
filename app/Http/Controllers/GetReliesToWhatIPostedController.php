@@ -20,7 +20,13 @@ class GetReliesToWhatIPostedController extends Controller
     }
 
     public function get_replies_to_what_i_posted(){
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+                $email = "kirumiraisaac@gmail.com";
+            }
         $chats = ChatReply::where('chatment_email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
         if(!$chats){
