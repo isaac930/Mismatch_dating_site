@@ -44,9 +44,9 @@ class Chat_replyController extends Controller
         
             else{   
                 
-                $name = "kirumira isaac";
-                $email = "kirumiraisaac@gmail.com";
-                $contact = "256759939936";
+                $name = "ndagire oliva";
+                $email = "oliva@gmail.com";
+                $contact = "256755789234";
          
             }
 
@@ -93,7 +93,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "kirumiraisaac@gmail.com";
+                $email = "oliva@gmail.com";
             }
         $chats = ChatReply::where('email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
@@ -112,7 +112,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "kirumiraisaac@gmail.com";
+                $email = "oliva@gmail.com";
             }
         $chat = ChatReply::where('email',$email)->where('id',$id)->get();
         return response()->json(['chat_reply' => $chat->toArray()]);
@@ -130,7 +130,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "kirumiraisaac@gmail.com";
+                $email = "oliva@gmail.com";
             }
         $chat = ChatReply::where('email',$email)->where('id',$id)->delete();
         return response()->json(['message' => 'Chat Reply Deleted Successfully']);
@@ -159,12 +159,12 @@ class Chat_replyController extends Controller
         
             else{   
                 
-                $name = "kirumira isaac";
-                $email = "kirumiraisaac@gmail.com";
-                $contact = "256759939936";
+                $name = "ndagire oliva";
+                $email = "oliva@gmail.com";
+                $contact = "256755789234";
          
             }
-
+            
         $chatment_email = $request->chatment_email; // email of chatment to reply to
         $postid = $request->post_id; //id of post to reply to
         $post_reply = $request->post_reply; //reply to the post
