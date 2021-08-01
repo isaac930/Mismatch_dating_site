@@ -21,7 +21,14 @@ class GetAllChatsToReplyToByAUserController extends Controller
 
     public function get_all_chats_toberepliedto_byauser(){
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+                $email = "kirumiraisaac@gmail.com";
+            }
+
         $chats = Chat::orderByDesc('id')->where('chatment_email',$email)->get();
         return response()->json(['chats' => $chats->toArray()]);
         if(!$chats){
