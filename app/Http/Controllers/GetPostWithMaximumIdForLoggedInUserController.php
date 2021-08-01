@@ -26,7 +26,14 @@ class GetPostWithMaximumIdForLoggedInUserController extends Controller
 
         $maxid = Chat::max('id');
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+                $email = "kirumiraisaac@gmail.com";
+            }
+            
         $chat = Chat::where('email',$email)->where('id',$maxid)->get();
         return response()->json(['chat_post_with_maxid' => $chat->toArray()]);
         if(!$chat){
