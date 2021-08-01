@@ -36,9 +36,19 @@ class Chat_replyController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $name = Auth()->user()->name; //my name
-        $email = Auth()->user()->email; //my email
-        $contact = Auth()->user()->contact; //my contact
+        if (Auth::check()){
+            $name = Auth()->user()->name;
+            $email = Auth()->user()->email;
+            $contact = Auth()->user()->contact;
+            }
+        
+            else{   
+                
+                $name = "kirumira isaac";
+                $email = "kirumiraisaac@gmail.com";
+                $contact = "256759939936";
+         
+            }
 
         $chatment_email = $request->chatment_email; // email of chatment to reply to
         $id = $request->post_id; //id of post to reply to
@@ -76,7 +86,15 @@ class Chat_replyController extends Controller
 
     public function index(){
    
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+         
+            }
+        
+            else{   
+            
+                $email = "kirumiraisaac@gmail.com";
+            }
         $chats = ChatReply::where('email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
         if(!$chats){
@@ -87,7 +105,15 @@ class Chat_replyController extends Controller
 
     public function show($id){
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+         
+            }
+        
+            else{   
+            
+                $email = "kirumiraisaac@gmail.com";
+            }
         $chat = ChatReply::where('email',$email)->where('id',$id)->get();
         return response()->json(['chat_reply' => $chat->toArray()]);
         if(!$chat){
@@ -97,7 +123,15 @@ class Chat_replyController extends Controller
 
     public function destroy($id){
 
-        $email = Auth()->user()->email;
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+         
+            }
+        
+            else{   
+            
+                $email = "kirumiraisaac@gmail.com";
+            }
         $chat = ChatReply::where('email',$email)->where('id',$id)->delete();
         return response()->json(['message' => 'Chat Reply Deleted Successfully']);
         if(!$chat){
@@ -117,9 +151,19 @@ class Chat_replyController extends Controller
             return response()->json($validator->errors(), 400);
         }
 
-        $name = Auth()->user()->name; //my name
-        $email = Auth()->user()->email; //my email
-        $contact = Auth()->user()->contact; //my contact
+        if (Auth::check()){
+            $name = Auth()->user()->name;
+            $email = Auth()->user()->email;
+            $contact = Auth()->user()->contact;
+            }
+        
+            else{   
+                
+                $name = "kirumira isaac";
+                $email = "kirumiraisaac@gmail.com";
+                $contact = "256759939936";
+         
+            }
 
         $chatment_email = $request->chatment_email; // email of chatment to reply to
         $postid = $request->post_id; //id of post to reply to
