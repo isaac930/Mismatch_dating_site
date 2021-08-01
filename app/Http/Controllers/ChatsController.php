@@ -34,13 +34,23 @@ class ChatsController extends Controller
             return response()->json($validator->errors(), 400);
         }
     
-        $name = Auth()->user()->name;
-        $email = Auth()->user()->email;
-        $contact = Auth()->user()->contact;
+        if (Auth::check()){
+            $name = Auth()->user()->name;
+            $email = Auth()->user()->email;
+            $contact = Auth()->user()->contact;
+            }
+        
+            else{   
+                
+                $name = "kirumira isaac";
+                $email = "kirumiraisaac@gmail.com";
+                $contact = "256759939936";
+         
+            }
 
         $chatment_email = $request->chatment_email;
         $post = $request->post;
-
+        
         $now = Carbon::now();
     
         $chatment_name = User::where('email',$chatment_email)->get('name');
