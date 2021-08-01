@@ -22,9 +22,17 @@ public function __construct(){
 
 public function get_profile_for_current_user(){
 
-    $name = Auth()->user()->name;
-    $email = Auth()->user()->email;
-    $contact = Auth()->user()->contact;
+    if (Auth::check()){
+        $name = Auth()->user()->name;
+        $email = Auth()->user()->email;
+        $contact = Auth()->user()->contact;
+        }
+    
+        else{   
+            $email = "kirumiraisaac@gmail.com";
+            $name = "kirumira isaac";
+            $contact = "256759939936";
+        }
 
     $profile = Profile::where('name',$name)->where('email',$email)->where('contact',$contact)->get();
     return response()->json(['profile' => $profile->toArray()]);
