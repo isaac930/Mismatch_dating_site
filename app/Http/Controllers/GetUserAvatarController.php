@@ -22,7 +22,9 @@ class GetUserAvatarController extends Controller
 
         $filename = Auth()->user()->image_path;
 
-        $path    = "https://isaacbucketenock.s3.us-east-2.amazonaws.com/users/$filename";
+        $path = public_path('/uploads/users/'.$filename);
+     
+        //$path    = "https://isaacbucketenock.s3.us-east-2.amazonaws.com/users/$filename";
      
         return response()->json(['avatar_path' => $path ]);
         
