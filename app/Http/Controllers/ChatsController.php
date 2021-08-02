@@ -38,6 +38,7 @@ class ChatsController extends Controller
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
             $contact = Auth()->user()->contact;
+            $image_path = Auth()->user()->image_path;
             }
         
             else{   
@@ -45,6 +46,7 @@ class ChatsController extends Controller
                 $name = "kirumira isaac";
                 $email = "kirumiraisaac@gmail.com";
                 $contact = "256759939936";
+                $image_path = "1234566.jpeg";
          
             }
 
@@ -55,6 +57,7 @@ class ChatsController extends Controller
     
         $chatment_name = User::where('email',$chatment_email)->get('name');
         $chatment_contact = User::where('email',$chatment_email)->get('contact');
+        $chatment_image_path = User::where('email',$chatment_email)->get('image_path');
         
         $chat = new Chat;
         $chat->date = $now;
@@ -65,6 +68,8 @@ class ChatsController extends Controller
         $chat->chatment_name = $chatment_name[0]['name'];
         $chat->chatment_contact = $chatment_contact[0]['contact'];
         $chat->post = $post;
+        $chat->image_path = $image_path;
+        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];
         $results = $chat->save();
     
         if($results){ 
@@ -126,6 +131,7 @@ class ChatsController extends Controller
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
             $contact = Auth()->user()->contact;
+            $image_path = Auth()->user()->image_path;
             }
         
             else{   
@@ -133,6 +139,7 @@ class ChatsController extends Controller
                 $name = "kirumira isaac";
                 $email = "kirumiraisaac@gmail.com";
                 $contact = "256759939936";
+                $image_path = "1234566.jpeg";
          
             }
 
@@ -143,6 +150,7 @@ class ChatsController extends Controller
     
         $chatment_name = User::where('email',$chatment_email)->get('name');
         $chatment_contact = User::where('email',$chatment_email)->get('contact');
+        $chatment_image_path = User::where('email',$chatment_email)->get('image_path');
         
         $chat = Chat::find($id);
         $chat->date = $now;
@@ -153,6 +161,8 @@ class ChatsController extends Controller
         $chat->chatment_name = $chatment_name[0]['name'];
         $chat->chatment_contact = $chatment_contact[0]['contact'];
         $chat->post = $post;
+        $chat->image_path = $image_path;
+        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];;
         $results = $chat->save();
     
         if($results){ 

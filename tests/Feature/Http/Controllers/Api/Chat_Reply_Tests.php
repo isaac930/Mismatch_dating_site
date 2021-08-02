@@ -31,6 +31,8 @@ class Chat_Reply_Tests extends TestCase
         'chatment_contact' => '256759939936',
         'post' => 'How are you oliva updated ?',
         'post_reply' => 'an ok isaac how is mukadde ?',
+        'image_path' => '123456.jpeg',
+        'chatment_image_path' => '34567888.jpeg',
         ]);
         $response->assertOk();
 
@@ -68,6 +70,8 @@ class Chat_Reply_Tests extends TestCase
         'chatment_name' => 'kirumira isaac',
         'chatment_contact' => '256759939936',
         'post_reply' => 'an ok isaac how is mukadde updated ?',
+        'image_path' => '123456.jpeg',
+        'chatment_image_path' => '34567888.jpeg',
         ]);
         $response->assertOk();
 

@@ -24,6 +24,8 @@ class CreateChatRepliesTable extends Migration
             $table->text('chatment_contact');
             $table->text('post');
             $table->text('reply_post');
+            $table->text('image_path');
+            $table->text('chatment_image_path');
             $table->timestamps();
                 });
     }

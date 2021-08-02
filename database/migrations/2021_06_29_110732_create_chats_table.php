@@ -23,6 +23,8 @@ class CreateChatsTable extends Migration
             $table->text('chatment_name');
             $table->text('chatment_contact');
             $table->text('post');
+            $table->text('image_path');
+            $table->text('chatment_image_path');
             $table->timestamps();
                 });
     }

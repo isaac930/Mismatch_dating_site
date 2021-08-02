@@ -25,6 +25,8 @@ class User_Can_Chat_With_Another_User extends TestCase
         'contact' => '256759939936',
         'chatment_email' => 'oliva@gmail.com',
         'post' => 'How are you oliva ?',
+        'image_path' => '123456.jpeg',
+        'chatment_image_path' => '34567888.jpeg',
         ]);
         $response->assertOk();
 
@@ -46,6 +48,8 @@ class User_Can_Chat_With_Another_User extends TestCase
         'contact' => '256759939936',
         'chatment_email' => 'oliva@gmail.com',
         'post' => 'How are you oliva updated ?',
+        'image_path' => '123456.jpeg',
+        'chatment_image_path' => '34567888.jpeg',
         ]);
         $response->assertOk();
        }

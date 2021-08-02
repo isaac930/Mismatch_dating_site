@@ -40,6 +40,7 @@ class Chat_replyController extends Controller
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
             $contact = Auth()->user()->contact;
+            $image_path = Auth()->user()->image_path;
             }
         
             else{   
@@ -47,6 +48,7 @@ class Chat_replyController extends Controller
                 $name = "ndagire oliva";
                 $email = "oliva@gmail.com";
                 $contact = "256755789234";
+                $image_path = "1234566.jpeg";
          
             }
 
@@ -61,6 +63,7 @@ class Chat_replyController extends Controller
         $post_to_reply_to = Chat::where('email',$chatment_email)->where('id',$id)->get('post');
         $chatment_name = Chat::where('email',$chatment_email)->where('id',$id)->get('name');
         $chatment_contact = Chat::where('email',$chatment_email)->where('id',$id)->get('contact');
+        $chatment_image_path = User::where('email',$chatment_email)->get('image_path');
 
         $reply = new ChatReply;
         $reply->date = $now;
@@ -72,6 +75,8 @@ class Chat_replyController extends Controller
         $reply->chatment_contact = $chatment_contact[0]['contact'];
         $reply->post = $post_to_reply_to[0]['post'];
         $reply->reply_post = $post_reply;
+        $chat->image_path = $image_path;
+        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];;
         $results = $reply->save();
 
     
@@ -155,6 +160,7 @@ class Chat_replyController extends Controller
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
             $contact = Auth()->user()->contact;
+            $image_path = Auth()->user()->image_path;
             }
         
             else{   
@@ -162,6 +168,7 @@ class Chat_replyController extends Controller
                 $name = "ndagire oliva";
                 $email = "oliva@gmail.com";
                 $contact = "256755789234";
+                $image_path = "1234566.jpeg";
          
             }
             
@@ -176,6 +183,7 @@ class Chat_replyController extends Controller
         $post_to_reply_to = Chat::where('email',$chatment_email)->where('id',$postid)->get('post');
         $chatment_name = Chat::where('email',$chatment_email)->where('id',$postid)->get('name');
         $chatment_contact = Chat::where('email',$chatment_email)->where('id',$postid)->get('contact');
+        $chatment_image_path = User::where('email',$chatment_email)->get('image_path');
 
         $reply = ChatReply::find($id);
         $reply->date = $now;
@@ -187,6 +195,8 @@ class Chat_replyController extends Controller
         $reply->chatment_contact = $chatment_contact[0]['contact'];
         $reply->post = $post_to_reply_to[0]['post'];
         $reply->reply_post = $post_reply;
+        $chat->image_path = $image_path;
+        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];;
         $results = $reply->save();
 
         if($results){ 
