@@ -31,7 +31,9 @@ class GetPostWithMaximumIdForLoggedInUserController extends Controller
             }
         
             else{   
-                $email = "kirumiraisaac@gmail.com";
+            
+                $email = User::first()->email;
+               
             }
             
         $chat = Chat::where('email',$email)->where('id',$maxid)->get();

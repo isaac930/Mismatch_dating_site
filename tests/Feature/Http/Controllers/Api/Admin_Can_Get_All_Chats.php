@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class Admin_Can_Get_All_Chats extends TestCase
 {
+   //use RefreshDatabase;
 // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Admin_Can_Get_All_Chats.php
 
    /** @test */

@@ -29,9 +29,10 @@ public function get_profile_for_current_user(){
         }
     
         else{   
-            $email = "kirumiraisaac@gmail.com";
-            $name = "kirumira isaac";
-            $contact = "256759939936";
+            $name = User::first()->name;
+            $email = User::first()->email;
+            $contact = User::first()->contact;
+           
         }
 
     $profile = Profile::where('name',$name)->where('email',$email)->where('contact',$contact)->get();

@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class Admin_Can_Get_All_ProfilesTest extends TestCase
 {
+    //use RefreshDatabase;
     /** @test */
     public function admin_can_get_all_profiles()
     {

@@ -25,6 +25,7 @@ class CreateChatsTable extends Migration
             $table->text('post');
             $table->text('image_path');
             $table->text('chatment_image_path');
+            $table->string('reply_status')->nullable();
             $table->timestamps();
                 });
     }

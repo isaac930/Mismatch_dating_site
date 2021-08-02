@@ -48,10 +48,10 @@ public  function store(Request $request){
 
     else{   
         
-        $name = "kirumira isaac";
-        $email = "kirumiraisaac@gmail.com";
-        $contact = "256759939936";
-        $image_path = "1234566.jpeg";
+        $name = User::first()->name;
+        $email = User::first()->email;
+        $contact = User::first()->contact;
+        $image_path = User::first()->image_path;
     }
 
     $checkprofile_existance = Profile::where('email',$email)->get();
@@ -97,7 +97,7 @@ public function index(){
     }
 
     else{
-        $email = "kirumiraisaac@gmail.com";
+       $email = User::first()->email;
     }
 
     $exclude = 'Not Searching';
@@ -119,7 +119,7 @@ public function show($id){
         
     }
     else{   
-    $email = "kirumiraisaac@gmail.com";
+        $email = User::first()->email;
         }
     $profile = Profile::where('searching_status','!=',$exclude)->where('email','!=',$email)->where('id',$id)->get();
     return response()->json(['profile' => $profile->toArray()]);
@@ -155,10 +155,10 @@ public function update(Request $request, $id){
     
         else{   
             
-            $name = "kirumira isaac";
-            $email = "kirumiraisaac@gmail.com";
-            $contact = "256759939936";
-            $image_path = "1234566.jpeg";
+            $name = User::first()->name;
+            $email = User::first()->email;
+            $contact = User::first()->contact;
+            $image_path = User::first()->image_path;
         }
   
     $exclude = 'Not Searching';

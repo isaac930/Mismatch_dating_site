@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class User_Can_Get_Posts_To_Reply_To extends TestCase
 {
-
+    //use RefreshDatabase;
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Get_Posts_To_Reply_To.php
 
 

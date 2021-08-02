@@ -30,6 +30,8 @@ class Chat_replyController extends Controller
             'chatment_email' => 'required',
             'post_reply' => 'required',
             'post_id' => 'required',
+            'image_path' => 'required',
+            'chatment_image_path' => 'required',
         ]);
     
         if($validator->fails()){
@@ -45,16 +47,17 @@ class Chat_replyController extends Controller
         
             else{   
                 
-                $name = "ndagire oliva";
-                $email = "oliva@gmail.com";
-                $contact = "256755789234";
-                $image_path = "1234566.jpeg";
-         
+                $name = User::first()->name;
+                $email = User::first()->email;
+                $contact = User::first()->contact;
+                $image_path = User::first()->image_path;
             }
 
         $chatment_email = $request->chatment_email; // email of chatment to reply to
         $id = $request->post_id; //id of post to reply to
         $post_reply = $request->post_reply; //reply to the post
+        $image_path = $request->image_path;
+        $chatment_image_path = $request->chatment_image_path;
 
         $now = Carbon::now();
 
@@ -63,8 +66,6 @@ class Chat_replyController extends Controller
         $post_to_reply_to = Chat::where('email',$chatment_email)->where('id',$id)->get('post');
         $chatment_name = Chat::where('email',$chatment_email)->where('id',$id)->get('name');
         $chatment_contact = Chat::where('email',$chatment_email)->where('id',$id)->get('contact');
-        $chatment_image_path = User::where('email',$chatment_email)->get('image_path');
-
         $reply = new ChatReply;
         $reply->date = $now;
         $reply->name = $name;
@@ -75,8 +76,8 @@ class Chat_replyController extends Controller
         $reply->chatment_contact = $chatment_contact[0]['contact'];
         $reply->post = $post_to_reply_to[0]['post'];
         $reply->reply_post = $post_reply;
-        $chat->image_path = $image_path;
-        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];;
+        $reply->image_path = $image_path;
+        $reply->chatment_image_path = $chatment_image_path;
         $results = $reply->save();
 
     
@@ -98,7 +99,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "oliva@gmail.com";
+                $email = User::first()->email;
             }
         $chats = ChatReply::where('email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
@@ -117,7 +118,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "oliva@gmail.com";
+                $email = User::first()->email;
             }
         $chat = ChatReply::where('email',$email)->where('id',$id)->get();
         return response()->json(['chat_reply' => $chat->toArray()]);
@@ -135,7 +136,7 @@ class Chat_replyController extends Controller
         
             else{   
             
-                $email = "oliva@gmail.com";
+                $email = User::first()->email;
             }
         $chat = ChatReply::where('email',$email)->where('id',$id)->delete();
         return response()->json(['message' => 'Chat Reply Deleted Successfully']);
@@ -160,15 +161,15 @@ class Chat_replyController extends Controller
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
             $contact = Auth()->user()->contact;
-            $image_path = Auth()->user()->image_path;
+         
             }
         
             else{   
                 
-                $name = "ndagire oliva";
-                $email = "oliva@gmail.com";
-                $contact = "256755789234";
-                $image_path = "1234566.jpeg";
+                $name = User::first()->name;
+                $email = User::first()->email;
+                $contact = User::first()->contact;
+                $image_path = User::first()->image_path;
          
             }
             
@@ -195,8 +196,6 @@ class Chat_replyController extends Controller
         $reply->chatment_contact = $chatment_contact[0]['contact'];
         $reply->post = $post_to_reply_to[0]['post'];
         $reply->reply_post = $post_reply;
-        $chat->image_path = $image_path;
-        $chat->chatment_image_path = $chatment_image_path[0]['image_path'];;
         $results = $reply->save();
 
         if($results){ 

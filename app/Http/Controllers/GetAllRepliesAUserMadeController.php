@@ -25,7 +25,7 @@ class GetAllRepliesAUserMadeController extends Controller
             }
         
             else{   
-                $email = "kirumiraisaac@gmail.com";
+                $email = User::first()->email;
             }
         $chats = ChatReply::where('chatment_email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);

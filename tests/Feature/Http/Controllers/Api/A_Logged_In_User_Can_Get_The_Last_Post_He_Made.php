@@ -9,6 +9,8 @@ use Tests\TestCase;
 class A_Logged_In_User_Can_Get_The_Last_Post_He_Made extends TestCase
 {
 
+  //use RefreshDatabase;
+
    // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/A_Logged_In_User_Can_Get_The_Last_Post_He_Made.php
 
   /** @test */

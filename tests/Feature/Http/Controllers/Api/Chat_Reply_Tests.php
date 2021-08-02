@@ -2,13 +2,15 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Chat;
+use App\Models\ChatReply;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class Chat_Reply_Tests extends TestCase
 {
-
+    //use RefreshDatabase;
 //clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Chat_Reply_Tests.php
  
     /** @test */
@@ -19,7 +21,7 @@ class Chat_Reply_Tests extends TestCase
         
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $post_id = 4;
+        $post_id = ChatReply::first()->id;
         $response = $this->post("http://localhost:8000/api/auth/chats_reply",[
          
         'post_id' => $post_id,       
@@ -33,6 +35,7 @@ class Chat_Reply_Tests extends TestCase
         'post_reply' => 'an ok isaac how is mukadde ?',
         'image_path' => '123456.jpeg',
         'chatment_image_path' => '34567888.jpeg',
+        
         ]);
         $response->assertOk();
 
@@ -58,8 +61,8 @@ class Chat_Reply_Tests extends TestCase
             
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $postid = 4; // id  of the post you replied to, it comes from chats table
-        $reply_id = 1; //id of the post to  be updated, it comes from the chat replies table
+        $postid = Chat::first()->id; // id  of the post you replied to, it comes from chats table
+        $reply_id = ChatReply::first()->id; //id of the post to  be updated, it comes from the chat replies table
         $response = $this->put("http://localhost:8000/api/auth/chats_reply/$reply_id",[
          
         'post_id' => $postid,       
@@ -73,7 +76,7 @@ class Chat_Reply_Tests extends TestCase
         'image_path' => '123456.jpeg',
         'chatment_image_path' => '34567888.jpeg',
         ]);
-        $response->assertOk();
+        $response->assertOk(200);
 
      }
 
@@ -81,7 +84,7 @@ class Chat_Reply_Tests extends TestCase
      public function a_user_can_get_single_reply_he_made_to_another_user()
      {
 // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Chat_Reply_Tests.php --filter a_user_can_get_single_reply_he_made_to_another_user
-        $id = 1;
+        $id = ChatReply::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->get("http://localhost:8000/api/auth/chats_reply/$id");
@@ -93,7 +96,7 @@ class Chat_Reply_Tests extends TestCase
       {
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Chat_Reply_Tests.php --filter a_user_can_delete_a_reply_he_made_to_another_user
 
-        $id = 3;
+        $id = ChatReply::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->delete("http://localhost:8000/api/auth/chats_reply/$id");

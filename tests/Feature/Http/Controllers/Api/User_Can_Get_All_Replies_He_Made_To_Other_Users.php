@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class User_Can_Get_All_Replies_He_Made_To_Other_Users extends TestCase
 {
+    //use RefreshDatabase;
 
 // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Get_All_Replies_He_Made_To_Other_Users.php
 

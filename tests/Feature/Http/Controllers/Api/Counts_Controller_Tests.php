@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class Counts_Controller_Tests extends TestCase
 {
+    //use RefreshDatabase;
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Counts_Controller_Tests.php
         /** @test */
         public function admin_can_get_total_number_of_users()

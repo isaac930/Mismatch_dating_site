@@ -9,6 +9,8 @@ use Tests\TestCase;
 class User_Can_Get_Replies_From_His_Chatments extends TestCase
 {
 
+  //use RefreshDatabase;
+
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Get_Replies_From_His_Chatments.php
 
    /** @test */

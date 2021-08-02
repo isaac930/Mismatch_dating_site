@@ -26,9 +26,9 @@ class GetAllChatsToReplyToByAUserController extends Controller
             }
         
             else{   
-                $email = "kirumiraisaac@gmail.com";
+                $email = User::first()->email;
             }
-
+  
         $chats = Chat::orderByDesc('id')->where('chatment_email',$email)->get();
         return response()->json(['chats' => $chats->toArray()]);
         if(!$chats){

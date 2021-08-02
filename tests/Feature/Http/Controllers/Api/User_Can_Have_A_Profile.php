@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class User_Can_Have_A_Profile extends TestCase
 {
   
-  // use RefreshDatabase;
+  //  //use RefreshDatabase;
 
   //making a test file  php artisan make:test Http/Controllers/Api/User_Can_Have_A_Profile
   
@@ -21,8 +21,9 @@ class User_Can_Have_A_Profile extends TestCase
   /** @test */
     public function a_user_can_have_a_profile()
     {
-      //clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_have_a_profile
-        $this->withoutExceptionHandling();
+      // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_have_a_profile
+       
+      $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->post("http://localhost:8000/api/auth/profiles",[
           
@@ -64,7 +65,7 @@ class User_Can_Have_A_Profile extends TestCase
 
          $this->withoutExceptionHandling();
 
-         $id = 4; //id value for kirumira isaac
+         $id = Profile::first()->id;
          $this->withoutMiddleware();
          $response = $this->put("http://localhost:8000/api/auth/profiles/$id",[
            
@@ -84,8 +85,22 @@ class User_Can_Have_A_Profile extends TestCase
 
 
        }
+          /** @test */
+          public function a_user_can_a_profile_for_other_specific_user()
+          {
 
-         /** @test */
+            // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_a_profile_for_other_specific_user
+
+            $id = Profile::first()->id;
+            $this->withoutExceptionHandling();
+            $this->withoutMiddleware();
+            $response = $this->get("http://localhost:8000/api/auth/profiles/$id");
+            $response->assertOk();
+
+          }
+
+
+                   /** @test */
          public function a_user_can_delete_his_profile()
          {
 
@@ -93,26 +108,11 @@ class User_Can_Have_A_Profile extends TestCase
 
           $this->withoutExceptionHandling();
 
-          $id = 4; //id value for kirumira isaac
+          $id = Profile::first()->id;
           $this->withoutMiddleware();
           $response = $this->delete("http://localhost:8000/api/auth/profiles/$id");
 
           $response->assertOk();
 
          }
-
-
-          /** @test */
-          public function a_user_can_a_profile_for_other_specific_user()
-          {
-
-            // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Have_A_Profile.php --filter a_user_can_a_profile_for_other_specific_user
-
-            $id = 1; //id value for ndagire oliva
-            $this->withoutExceptionHandling();
-            $this->withoutMiddleware();
-            $response = $this->get("http://localhost:8000/api/auth/profiles/$id");
-            $response->assertOk();
-
-          }
 }

@@ -15,10 +15,10 @@ class GetallUserAvatarsController extends Controller
 {
     
     public function get_all_user_avatar(){
-
+    
         $url = 'https://s3.' . env('AWS_DEFAULT_REGION') . '.amazonaws.com/' . env('AWS_BUCKET') . '/';
         $images = [];
-        $files = Storage::disk('s3')->files('users');
+         $files = Storage::disk('s3')->files('users');
         foreach ($files as $file) {
         $images[] = [
         'src' => $url . $file

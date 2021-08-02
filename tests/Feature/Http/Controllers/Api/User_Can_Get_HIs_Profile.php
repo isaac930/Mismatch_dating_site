@@ -8,6 +8,7 @@ use Tests\TestCase;
 
 class User_Can_Get_HIs_Profile extends TestCase
 {
+  //use RefreshDatabase;
 // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Get_HIs_Profile.php
   /** @test */
   public function a_user_can_get_his_profile()

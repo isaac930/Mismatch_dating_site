@@ -2,12 +2,14 @@
 
 namespace Tests\Feature\Http\Controllers\Api;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\Models\Chat;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class User_Can_Chat_With_Another_User extends TestCase
 {
+  //use RefreshDatabase;
     // run all tests clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php
 
      /** @test */
@@ -37,7 +39,7 @@ class User_Can_Chat_With_Another_User extends TestCase
        {
         // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_update_his_chat_post   
         
-        $id = 4;
+        $id = Chat::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $response = $this->put("http://localhost:8000/api/auth/chats/$id",[
@@ -71,7 +73,7 @@ class User_Can_Chat_With_Another_User extends TestCase
          {
  // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_get_a_single_post_in_his_own_posts
             
-             $id = 4;
+             $id = Chat::first()->id;
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
             $response = $this->get("http://localhost:8000/api/auth/chats/$id");
@@ -82,7 +84,7 @@ class User_Can_Chat_With_Another_User extends TestCase
           public function a_user_can_delete_a_single_post_in_his_own_posts()
           {
 // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/User_Can_Chat_With_Another_User.php --filter a_user_can_delete_a_single_post_in_his_own_posts
-            $id = 9;
+            $id = Chat::first()->id;
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
             $response = $this->delete("http://localhost:8000/api/auth/chats/$id");

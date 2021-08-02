@@ -43,10 +43,10 @@ class ChatsController extends Controller
         
             else{   
                 
-                $name = "kirumira isaac";
-                $email = "kirumiraisaac@gmail.com";
-                $contact = "256759939936";
-                $image_path = "1234566.jpeg";
+                $name = User::first()->name;
+                $email = User::first()->email;
+                $contact = User::first()->contact;
+                $image_path = User::first()->image_path;
          
             }
 
@@ -88,7 +88,7 @@ class ChatsController extends Controller
             }
         
             else{   
-             $email = "kirumiraisaac@gmail.com";
+             $email = User::first()->email;
             }
         $chats = Chat::orderByDesc('id')->where('email',$email)->get();
         return response()->json(['chats' => $chats->toArray()]);
@@ -105,7 +105,7 @@ class ChatsController extends Controller
             }
         
             else{   
-             $email = "kirumiraisaac@gmail.com";
+                $email = User::first()->email;
             }
 
         $chat = Chat::where('email',$email)->where('id',$id)->get();
@@ -136,10 +136,10 @@ class ChatsController extends Controller
         
             else{   
                 
-                $name = "kirumira isaac";
-                $email = "kirumiraisaac@gmail.com";
-                $contact = "256759939936";
-                $image_path = "1234566.jpeg";
+                $name = User::first()->name;
+                $email = User::first()->email;
+                $contact = User::first()->contact;
+                $image_path = User::first()->image_path;
          
             }
 
@@ -180,7 +180,7 @@ class ChatsController extends Controller
             }
         
             else{   
-             $email = "kirumiraisaac@gmail.com";
+                $email = User::first()->email;;
             }
         $chat = Chat::where('email',$email)->where('id',$id)->delete();
         return response()->json(['message' => 'Chat Post Deleted Successfully']);
