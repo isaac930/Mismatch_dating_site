@@ -98,8 +98,19 @@ class ChatRequestController extends Controller
         }
     }
 
-    public function show(){
-
+    public function destroy($id){
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+                $email = User::first()->email;;
+            }
+            $chatrequest = ChatRequest::where('chatment_email',$email)->find($id)->delete();
+        return response()->json(['message' => 'Chat Request Deleted Successfully']);
+        if(!$chatrequest){
+            return respose()->json(['message' => 'No Chat Request Found']);
+        }
     }
 
     
