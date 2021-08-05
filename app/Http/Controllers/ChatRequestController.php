@@ -65,8 +65,21 @@ class ChatRequestController extends Controller
            }
     }
 
-    public function update(){
+    public function update($id){
+        if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+             $email = User::first()->email;
+            }
 
+            $requeststatus = 'allowed';
+            $chatrequest = ChatRequest::where('chatment_email',$email)->find($id);
+            $chatrequest->chat_request_status = $requeststatus;
+            $results = $chatrequest->save();
+
+            return 'You Have approved to chat with'.' '.Auth()->user()->name;
     }
 
     public function index(){
