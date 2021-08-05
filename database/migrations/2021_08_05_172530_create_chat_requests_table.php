@@ -15,6 +15,11 @@ class CreateChatRequestsTable extends Migration
     {
         Schema::create('chat_requests', function (Blueprint $table) {
             $table->id();
+            $table->text('name');
+            $table->text('chatment_name');
+            $table->text('email');
+            $table->text('chatment_email');
+            $table->string('chat_request_status')->default('not allowed');
             $table->timestamps();
         });
     }
