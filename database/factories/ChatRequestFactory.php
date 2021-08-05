@@ -22,7 +22,11 @@ class ChatRequestFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name' =>$this->faker->name(),
+            'chatment_name' => $this->faker->name(),
+            'email' => $this->faker->unique()->safeEmail(),
+            'chatment_email' => $this->faker->unique()->safeEmail(),
+            'chat_request_status' => $this->faker->word(),
         ];
     }
 }
