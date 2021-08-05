@@ -61,12 +61,21 @@ class ChatRequestController extends Controller
            else{
             return response()->json(['message' => 'Chat Request failed']); 
            }
+    }
 
-
-           
-
+    public function update(){
 
     }
+    
+    public function index(){
+
+    }
+
+    public function show(){
+
+    }
+
+    
 
     protected function guard(){
         return Auth::guard();
