@@ -20,6 +20,7 @@ class CreateChatRequestsTable extends Migration
             $table->text('email');
             $table->text('chatment_email');
             $table->string('chat_request_status')->default('not allowed');
+            $table->text('image_path')->nullable();
             $table->timestamps();
         });
     }

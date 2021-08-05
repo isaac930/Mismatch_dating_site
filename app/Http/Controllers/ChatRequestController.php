@@ -36,6 +36,7 @@ class ChatRequestController extends Controller
         if (Auth::check()){
             $name = Auth()->user()->name;
             $email = Auth()->user()->email;
+            $image_path = Auth()->user()->image_path;
             }
         
             else{   
@@ -51,6 +52,7 @@ class ChatRequestController extends Controller
             $chatrequest->email = $email;
             $chatrequest->chatment_name = $chatment_name;
             $chatrequest->chatment_email = $chatment_email;
+            $chatrequest->image_path = $image_path;
             $results = $chatrequest->save();
 
 

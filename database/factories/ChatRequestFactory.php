@@ -27,6 +27,7 @@ class ChatRequestFactory extends Factory
             'email' => $this->faker->unique()->safeEmail(),
             'chatment_email' => $this->faker->unique()->safeEmail(),
             'chat_request_status' => $this->faker->word(),
+            'image_path' => rand(0, 1),
         ];
     }
 }
