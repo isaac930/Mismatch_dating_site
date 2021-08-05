@@ -97,11 +97,6 @@ class Chat_replyController extends Controller
          
             }
         
-            else{   
-            
-                $email = User::first()->email;
-            }
-        $chats = ChatReply::where('email',$email)->get();
         return response()->json(['chats_replies' => $chats->toArray()]);
         if(!$chats){
             return respose()->json(['message' => 'No Chat Replies Found']);

@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use Exception;
-use App\Models\User;
+use Carbon\Carbon;
 use App\Models\Chat;
+use App\Models\User;
 use App\Exceptions\Handler;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class ChatsController extends Controller
@@ -73,8 +74,9 @@ class ChatsController extends Controller
         $results = $chat->save();
     
         if($results){ 
-            return response()->json(['message' => 'Your Chat Post Has Been Submited']);
-            }
+            //return response()->json(['message' => 'Your Chat Post Has Been Submited']);
+            Session::flash('success', 'chat posted');  
+        }
            else{
             return response()->json(['message' => 'Chat Post Submission Failed']); 
            }

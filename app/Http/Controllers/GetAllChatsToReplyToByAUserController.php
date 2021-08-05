@@ -28,8 +28,8 @@ class GetAllChatsToReplyToByAUserController extends Controller
             else{   
                 $email = User::first()->email;
             }
-  
-        $chats = Chat::orderByDesc('id')->where('chatment_email',$email)->get();
+        $reply_status = 'replied';
+        $chats = Chat::orderByDesc('id')->where('chatment_email',$email)->where('reply_status','not replied')->get();
         return response()->json(['chats' => $chats->toArray()]);
         if(!$chats){
             return respose()->json(['message' => 'No Chat Found']);
