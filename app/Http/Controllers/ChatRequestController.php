@@ -66,9 +66,21 @@ class ChatRequestController extends Controller
     public function update(){
 
     }
-    
-    public function index(){
 
+    public function index(){
+       if (Auth::check()){
+            $email = Auth()->user()->email;
+            }
+        
+            else{   
+             $email = User::first()->email;
+            }
+            $requeststatus = 'not allowed';
+        $chatrequests = ChatRequest::orderByDesc('id')->where('chat_request_status',$requeststatus)->where('chatment_email',$email)->get();
+        return response()->json(['chatrequests' => $chatrequests->toArray()]);
+        if(!$chatrequests){
+            return respose()->json(['message' => 'No Chat Request Found']);
+        }
     }
 
     public function show(){
