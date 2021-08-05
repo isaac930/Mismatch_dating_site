@@ -68,8 +68,9 @@ Route::group([
 
     Route::put('update_chat_post_status', 'Update_Reply_Status_In_chatsContoller@update_chat_reply_status');
 
-    //route to test websockets
+    Route::apiresource('chatrequest','ChatRequestController');
 
+    //route to test websockets
     Route::get('broadcast', 'InvokeNewMessageEventController@getNewMessage');
 
     //command to create an sqlite db to use for our tests
