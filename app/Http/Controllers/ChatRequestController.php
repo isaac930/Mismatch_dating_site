@@ -47,12 +47,17 @@ class ChatRequestController extends Controller
             $chatment_name = $request->chatment_name;
             $chatment_email = $request->chatment_email;
 
+            $get_chatment_image_path = User::where('email',$chatment_email)->get('image_path');
+
+            $chatment_image_path = $get_chatment_image_path[0]['image_path'];
+
             $chatrequest = new ChatRequest;
             $chatrequest->name = $name;
             $chatrequest->email = $email;
             $chatrequest->chatment_name = $chatment_name;
             $chatrequest->chatment_email = $chatment_email;
             $chatrequest->image_path = $image_path;
+            $chatrequest->chatment_image_path = $chatment_image_path;
             $results = $chatrequest->save();
 
 

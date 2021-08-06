@@ -72,7 +72,8 @@ Route::group([
 
     Route::get('allowedchats', 'AllowedChatRequestController@get_allowed_people_to_chat');
     
-
+    Route::get('allowedchatsme', 'AllowedChatsByMeCotroller@get_allowed_people_to_chat_by_me');
+    
     //route to test websockets
     Route::get('broadcast', 'InvokeNewMessageEventController@getNewMessage');
 

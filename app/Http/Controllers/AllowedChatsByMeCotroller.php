@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Exception;
@@ -10,8 +11,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
-class AllowedChatRequestController extends Controller
+
+class AllowedChatsByMeCotroller extends Controller
 {
+
     protected $user;
 
     public function __construct(){
@@ -19,7 +22,7 @@ class AllowedChatRequestController extends Controller
         $this->user = $this->guard()->user();
     }
 
-    public function get_allowed_people_to_chat(){
+    public function get_allowed_people_to_chat_by_me(){
 
         if (Auth::check()){
             $email = Auth()->user()->email;
@@ -29,7 +32,7 @@ class AllowedChatRequestController extends Controller
              $email = User::first()->email;
             }
          $requeststatus = 'allowed';
-         $chatrequests = ChatRequest::orderByDesc('id')->where('chat_request_status',$requeststatus)->Where('email',$email)->get();
+         $chatrequests = ChatRequest::orderByDesc('id')->where('chat_request_status',$requeststatus)->Where('chatment_email',$email)->get();
   
         return response()->json(['chatrequests' => $chatrequests->toArray()]);
         if(!$chatrequests){
