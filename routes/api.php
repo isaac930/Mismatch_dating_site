@@ -70,6 +70,9 @@ Route::group([
 
     Route::apiresource('chatrequest','ChatRequestController');
 
+    Route::get('allowedchats', 'AllowedChatRequestController@get_allowed_people_to_chat');
+    
+
     //route to test websockets
     Route::get('broadcast', 'InvokeNewMessageEventController@getNewMessage');
 
