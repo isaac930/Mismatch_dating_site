@@ -102,8 +102,7 @@ public function index(){
 
     $exclude = 'Not Searching';
     $usergender = Profile::where('email',$email)->get('gender');
-    
-    $profiles = Profile::orderByDesc('id')->where('email','!=',$email)->where('gender','!=',$usergender)->where('searching_status','!=',$exclude)->get();
+    $profiles = Profile::orderByDesc('id')->where('email','!=',$email)->where('gender','!=',$usergender[0]['gender'])->where('searching_status','!=',$exclude)->get();
     return response()->json(['profiles' => $profiles->toArray()]);
     if(!$profiles){
         return respose()->json(['message' => 'No Profile Found']);

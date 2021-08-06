@@ -74,7 +74,7 @@ class ChatsController extends Controller
     
         if($results){ 
             //return response()->json(['message' => 'Your Chat Post Has Been Submited']);
-            Session::flash('success', 'chat Posted');  
+         
         }
            else{
             return response()->json(['message' => 'Chat Post Submission Failed']); 
