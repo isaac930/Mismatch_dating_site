@@ -16,7 +16,7 @@ class Counts_Controller_Tests extends TestCase
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Counts_Controller_Tests.php --filter admin_can_get_total_number_of_users
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
-            $response = $this->get("http://localhost:8000/api/auth/totalusers");
+            $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/totalusers");
             $response->assertOk();
      
         }
@@ -28,7 +28,7 @@ class Counts_Controller_Tests extends TestCase
 
                    $this->withoutExceptionHandling();
                    $this->withoutMiddleware();
-                   $response = $this->get("http://localhost:8000/api/auth/totalsuccessful_profiles");
+                   $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/totalsuccessful_profiles");
                    $response->assertOk();
             
                }
@@ -39,7 +39,7 @@ class Counts_Controller_Tests extends TestCase
     // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Counts_Controller_Tests.php --filter admin_can_get_total_number_of_men
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
-            $response = $this->get("http://localhost:8000/api/auth/totalmen");
+            $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/totalmen");
             $response->assertOk();
      
         }
@@ -50,7 +50,7 @@ class Counts_Controller_Tests extends TestCase
      // clear && ./vendor/bin/phpunit tests/Feature/Http/Controllers/Api/Counts_Controller_Tests.php --filter admin_can_get_total_number_of_women
              $this->withoutExceptionHandling();
              $this->withoutMiddleware();
-             $response = $this->get("http://localhost:8000/api/auth/totalwomen");
+             $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/totalwomen");
              $response->assertOk();
       
          }       

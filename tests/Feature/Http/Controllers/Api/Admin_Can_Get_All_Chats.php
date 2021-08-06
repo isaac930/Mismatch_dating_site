@@ -18,7 +18,7 @@ class Admin_Can_Get_All_Chats extends TestCase
  
        $this->withoutExceptionHandling();
        $this->withoutMiddleware();
-       $response = $this->get("http://localhost:8000/api/auth/allchats");
+       $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/allchats");
        $response->assertOk();
 
    }

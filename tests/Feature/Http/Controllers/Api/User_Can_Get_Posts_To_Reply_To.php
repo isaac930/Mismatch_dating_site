@@ -19,7 +19,7 @@ class User_Can_Get_Posts_To_Reply_To extends TestCase
 
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->get("http://localhost:8000/api/auth/chats_to_reply_to");
+        $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_to_reply_to");
         $response->assertOk();
  
     } 

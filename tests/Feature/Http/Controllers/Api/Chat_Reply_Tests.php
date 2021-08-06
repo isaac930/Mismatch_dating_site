@@ -22,7 +22,7 @@ class Chat_Reply_Tests extends TestCase
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
         $post_id = ChatReply::first()->id;
-        $response = $this->post("http://localhost:8000/api/auth/chats_reply",[
+        $response = $this->post("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_reply",[
          
         'post_id' => $post_id,       
         'name' => 'ndagire oliva',
@@ -48,7 +48,7 @@ class Chat_Reply_Tests extends TestCase
 
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->get("http://localhost:8000/api/auth/chats_reply");
+        $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_reply");
         $response->assertOk();
 
     }
@@ -63,7 +63,7 @@ class Chat_Reply_Tests extends TestCase
         $this->withoutMiddleware();
         $postid = Chat::first()->id; // id  of the post you replied to, it comes from chats table
         $reply_id = ChatReply::first()->id; //id of the post to  be updated, it comes from the chat replies table
-        $response = $this->put("http://localhost:8000/api/auth/chats_reply/$reply_id",[
+        $response = $this->put("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_reply/$reply_id",[
          
         'post_id' => $postid,       
         'name' => 'ndagire oliva',
@@ -87,7 +87,7 @@ class Chat_Reply_Tests extends TestCase
         $id = ChatReply::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->get("http://localhost:8000/api/auth/chats_reply/$id");
+        $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_reply/$id");
         $response->assertOk();
      }
 
@@ -99,7 +99,7 @@ class Chat_Reply_Tests extends TestCase
         $id = ChatReply::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->delete("http://localhost:8000/api/auth/chats_reply/$id");
+        $response = $this->delete("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats_reply/$id");
         $response->assertOk();
 
       }

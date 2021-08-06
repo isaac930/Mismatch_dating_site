@@ -19,7 +19,7 @@ class User_Can_Chat_With_Another_User extends TestCase
 
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->post("http://localhost:8000/api/auth/chats",[
+        $response = $this->post("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats",[
          
                
         'name' => 'kirumira isaac',
@@ -42,7 +42,7 @@ class User_Can_Chat_With_Another_User extends TestCase
         $id = Chat::first()->id;
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->put("http://localhost:8000/api/auth/chats/$id",[
+        $response = $this->put("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats/$id",[
          
                
         'name' => 'kirumira isaac',
@@ -63,7 +63,7 @@ class User_Can_Chat_With_Another_User extends TestCase
         
         $this->withoutExceptionHandling();
         $this->withoutMiddleware();
-        $response = $this->get("http://localhost:8000/api/auth/chats");
+        $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats");
         $response->assertOk();
 
        }
@@ -76,7 +76,7 @@ class User_Can_Chat_With_Another_User extends TestCase
              $id = Chat::first()->id;
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
-            $response = $this->get("http://localhost:8000/api/auth/chats/$id");
+            $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats/$id");
             $response->assertOk();
          }
 
@@ -87,7 +87,7 @@ class User_Can_Chat_With_Another_User extends TestCase
             $id = Chat::first()->id;
             $this->withoutExceptionHandling();
             $this->withoutMiddleware();
-            $response = $this->delete("http://localhost:8000/api/auth/chats/$id");
+            $response = $this->delete("https://powerful-cliffs-24132.herokuapp.com/api/auth/chats/$id");
             $response->assertOk();
 
           }

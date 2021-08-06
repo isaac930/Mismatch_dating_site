@@ -21,7 +21,7 @@ class User_Can_Get_All_Replies_He_Made_To_Other_Users extends TestCase
 
           $this->withoutExceptionHandling();
           $this->withoutMiddleware();
-          $response = $this->get("http://localhost:8000/api/auth/get_replies_auser_makes");
+          $response = $this->get("https://powerful-cliffs-24132.herokuapp.com/api/auth/get_replies_auser_makes");
           $response->assertOk();
    
       } 
